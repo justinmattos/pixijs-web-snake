@@ -5,4 +5,4 @@ const Score = require('./Models/Scores');
 User.hasMany(Score);
 Score.belongsTo(User);
 
-module.exports = { db, models: { User } };
+module.exports = { db, models: { User, Score } };

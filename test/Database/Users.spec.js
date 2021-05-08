@@ -1,18 +1,18 @@
 const bcrypt = require('bcrypt');
 const { ValidationError, UniqueConstraintError } = require('sequelize');
 const {
-  models: { User },
+  models: { User, Score },
 } = require('../../server/db/index');
 
-beforeAll(() => {
-  const newUser = new User({
-    username: 'silentduck43',
-    email: 'test@gmail.com',
-    password: 'testpassword',
-  });
-  return newUser.save();
-});
 describe('User Model', () => {
+  beforeAll(() => {
+    const newUser = new User({
+      username: 'silentduck43',
+      email: 'test@gmail.com',
+      password: 'testpassword',
+    });
+    return newUser.save();
+  });
   describe('Attributes', () => {
     let testUser;
     beforeEach(() => {
@@ -77,9 +77,12 @@ describe('User Model', () => {
           username: 'silentduck57',
           password: 'testpassword',
         });
-        anotherUser.save().catch((err) => {
-          expect(err instanceof UniqueConstraintError).toBe(true);
-        });
+        anotherUser
+          .save()
+          .then(() => expect(true).toBe(false))
+          .catch((err) => {
+            expect(err instanceof UniqueConstraintError).toBe(true);
+          });
       });
     });
     describe('password', () => {

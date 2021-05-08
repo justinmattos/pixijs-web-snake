@@ -7,5 +7,6 @@ afterAll(() => {
   return db.close();
 });
 describe('Model Tests', () => {
-  require('./Database/models.spec');
+  require('./Database/Users.spec');
+  require('./Database/Scores.spec');
 });
