@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import Main from './components/Main.jsx';
 
 const app = document.querySelector('#main');
 
-ReactDOM.render(<App />, app);
+ReactDOM.render(<Main />, app);

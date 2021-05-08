@@ -1,22 +1,39 @@
-import React from 'react';
-import { HashRouter as Router, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
-
-import store from '../store';
-
-import GlobalStyle from '../containers/GlobalStyle';
+import React, { useState } from 'react';
+import { HashRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Navigation from './Navigation.jsx';
+import Login from './dashboard/Login.jsx';
+
+import { setToken } from '../store/reducers/token';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector(({ token }) => ({ token }));
+  if (!token) {
+    const localToken = window.localStorage.getItem('token');
+    console.log(localToken);
+    dispatch(setToken(localToken));
+  }
+  console.log(token);
   return (
-    <Provider store={store}>
-      <GlobalStyle />
+    <Router>
       <Navigation />
-      <Router>
-        <Switch></Switch>
-      </Router>
-    </Provider>
+      <Switch>
+        <Route path="/" exact>
+          Home
+        </Route>
+        <Route path="/dashboard" exact>
+          Dashboard
+        </Route>
+        <Route component={Login} path="/login" exact>
+          Login
+        </Route>
+        <Route>
+          Page not Found <Link to="/">Return Home</Link>
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
