@@ -10,5 +10,8 @@ describe('Server', () => {
     test('returns a 200 at root', (done) => {
       agent.get('/').expect(200, done);
     });
+    test('returns an html page at root', (done) => {
+      agent.get('/').expect('Content-Type', /html/).expect(200, done);
+    });
   });
 });

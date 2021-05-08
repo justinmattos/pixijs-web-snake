@@ -8,8 +8,8 @@
     "build:dev": "webpack --watch --mode=development",
     "start": "node server",
     "start:dev": "nodemon server",
-    "test": "jest test/*",
-    "test:dev": "jest test/* --watch"
+    "test": "PORT=3030 jest test/*",
+    "test:dev": "PORT=3030 jest test/* --watch"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,10 @@
   "homepage": "https://github.com/justinmattos/pixijs-web-snake#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pixi.js": "^6.0.2"
+    "morgan": "^1.10.0",
+    "pg": "^8.6.0",
+    "pixi.js": "^6.0.2",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

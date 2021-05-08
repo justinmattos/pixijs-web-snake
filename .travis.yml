@@ -4,4 +4,4 @@ node_js:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database pixijs-web-snake;' -U postgres
+  - psql -c 'create database pixijs_web_snake;' -U postgres
