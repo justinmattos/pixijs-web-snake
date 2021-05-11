@@ -5,7 +5,6 @@ import { NavContainer, NavRow, UserOptions } from '../containers/Navigation';
 
 const Navigation = () => {
   const { token } = useSelector(({ token }) => ({ token }));
-  console.log(token);
   return (
     <NavContainer>
       <NavRow primary>

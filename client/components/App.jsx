@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Navigation from './Navigation.jsx';
 import Login from './dashboard/Login.jsx';
+import Game from './gamearea/Game.jsx';
 
 import { setToken } from '../store/reducers/token';
 
@@ -15,7 +16,6 @@ const App = () => {
     console.log(localToken);
     dispatch(setToken(localToken));
   }
-  console.log(token);
   return (
     <Router>
       <Navigation />
@@ -29,6 +29,7 @@ const App = () => {
         <Route component={Login} path="/login" exact>
           Login
         </Route>
+        <Route component={Game} path="/snake" exact />
         <Route>
           Page not Found <Link to="/">Return Home</Link>
         </Route>

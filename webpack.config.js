@@ -15,6 +15,15 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.(png|jp(e*)g|svg|git)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'images/[hash]-[name].[ext]',
+          },
+        },
+      },
     ],
   },
 };
