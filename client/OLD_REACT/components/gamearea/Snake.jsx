@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Sprite, useApp, useTick } from '@inlet/react-pixi';
-import { loader } from 'pixi.js';
+import { Loader } from 'pixi.js';
 
-import snakeHead from '../images/snake-head.svg';
-
-const Snake = () => {
+const Snake = ({ sprites }) => {
   const app = useApp();
   const [direction, setDirection] = useState({ moveX: 1, moveY: 0 });
   const [motion, setMotion] = useState({
@@ -36,7 +34,7 @@ const Snake = () => {
   //     setDirection({ moveX: -1, moveY: 0 });
   //   }
   // });
-  return <Sprite image={snakeHead} {...motion} />;
+  return <Sprite image={sprites.head} {...motion} />;
 };
 
 export default Snake;

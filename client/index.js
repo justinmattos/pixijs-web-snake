@@ -1,7 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Main from './components/Main.jsx';
+import { app, loader } from './pixi/app';
+import { setup } from './pixi/setup';
 
-const app = document.querySelector('#main');
+document.querySelector('#main').appendChild(app.view);
 
-ReactDOM.render(<Main />, app);
+loader
+  .add([
+    { name: 'head', url: './public/images/SnakeHead.png' },
+    { name: 'redBody', url: './public/images/BodyRedStraightThin.png' },
+    { name: 'blackTail', url: './public/images/TailBlack.png' },
+  ])
+  .load(setup);
