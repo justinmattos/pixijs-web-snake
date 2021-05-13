@@ -13,5 +13,10 @@
     {
       "files": ["*.jsx", "*.js"]
     }
-  ]
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  }
 }
