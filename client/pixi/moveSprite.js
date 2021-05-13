@@ -1,5 +1,17 @@
 import { app } from './app';
 
+export const chainMoves = (player, arrayOfMoves) => {
+  const recursiveFunc = (arrayOfFurtherMoves) => {
+    if (arrayOfFurtherMoves.length) {
+      setTimeout(() => {
+        moveSprite(player, arrayOfFurtherMoves.shift());
+        recursiveFunc(arrayOfFurtherMoves);
+      }, 1000);
+    }
+  };
+  recursiveFunc(arrayOfMoves);
+};
+
 export const moveSprite = (player, direction) => {
   const { head, body, tail } = player;
   const { x, y, rotation } = head;
@@ -87,6 +99,9 @@ export const shiftBody = (body, route, tail) => {
     } else {
       segment.elbow = false;
       sprite = segment.sprite;
+      if (next === 'UP' || next === 'DOWN') {
+        sprite.rotation = Math.PI / 2;
+      }
     }
     route.next = findNext(route, sprite);
     [sprite.x, route.nextX] = [route.nextX, sprite.x];
